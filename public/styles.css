@@ -1,0 +1,95 @@
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+#chat {
+    display: none;
+}
+
+#channel {
+    display: none;
+}
+
+.drawer {
+    border: none;
+    
+}
+.navigation {
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.dialog-card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    height: 200px;
+    margin: auto;
+}
+
+.add-channel {
+    margin: 16px 40px;
+}
+
+.send-button {
+    padding: 16px 0px;
+}
+
+.message-area {
+
+    position: absolute;
+    width: 100%;
+    bottom: 8px;
+    padding: 0;
+}
+
+.message-card {
+    width: inherit;
+    min-height: inherit;
+}
+
+.message-field {
+    width: 100%;
+}
+
+.username-field {
+    width: 100%;
+}
+.chat-area {
+    position: absolute;
+    left : 0;
+    right : 0;
+    top:0;
+    bottom:0;
+}
+
+.user-card {
+    height: 50%;
+}
+
+.chat-list-div {
+    padding: 0;
+    overflow: auto;
+    height: 85%;
+    display: none;
+}
+
+.user-list-div {
+    padding: 0;
+    overflow: auto;
+    height: 100%;
+}
+
+.listborder {
+    margin: 0;
+    padding: 0;
+}
+.user-list-item {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+

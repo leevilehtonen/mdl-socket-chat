@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Material Design Lite</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="main.js"></script>
+
+<body>
+
+
+
+    <div id="login">
+        <div class="mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-200">
+            <main class="mdl-layout__content">
+                <div class="dialog-card mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-color--indigo-700">
+                        <h2 class="mdl-card__title-text" style="color: #fff">Username</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <form action="" id="add-username">
+                            <div class="username-field mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" type="text" id="usernameInput">
+                                <label class="mdl-textfield__label" for="usernameInput">Username</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mdl-card__actions">
+                        <button id="login-chat-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="username-error" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+        </div>
+    </div>
+
+    <div id="chat">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title" id="header-title">all</span>
+                    <div class="mdl-layout-spacer"></div>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50 drawer">
+                <span class="mdl-layout-title drawer-header" id="drawer-title">Chat(Leevi)</span>
+                <nav class="mdl-navigation mdl-color--blue-grey-800 navigation" id="channelsList">
+                    <a class="mdl-navigation__link mdl-color-text--blue-grey-50" id="channel-all">all</a>
+
+
+                    <button class="add-channel mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect"
+                        id="channelButton">
+                        <i class="material-icons">add</i>
+                    </button>
+                    <div class="mdl-layout-spacer"></div>
+                    <a class="mdl-navigation__link"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+
+                </nav>
+            </div>
+            <main class="mdl-layout__content mdl-color--grey-50">
+                <div class="page-content">
+
+                    <section class="chat-area mdl-grid">
+                        <div class="mdl-cell mdl-cell--9-col" id="chat-cell">
+                        </div>
+                        <div class="user-card mdl-card mdl-shadow--2dp mdl-cell mdl-cell--2-col mdl-cell--1-offset mdl-cell--hide-phone mdl-cell--hide-tablet">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">Users</h2>
+                            </div>
+                            <div class="user-list-div">
+                                <ul class="listborder mdl-list" id="users">
+                                </ul>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <section class="message-area mdl-grid">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <div class="message-card mdl-card mdl-grid mdl-shadow--2dp">
+                                <div class="message-box mdl-cell mdl-cell--11-col">
+                                    <form action="" id="send-message-form">
+                                        <div class="message-field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input" autocomplete="off" type="text" id="send-message-form-input">
+                                            <label class="mdl-textfield__label" for="send-message-form-input">Message</label>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="send-button mdl-cell mdl-cell--1-col">
+                                    <button id="send-message-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div id="channel">
+        <div class="mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-200">
+            <main class="mdl-layout__content" style="background-color:rgba(0,0,0,0.5)">
+                <div class="dialog-card mdl-card mdl-shadow--16dp">
+                    <div class="mdl-card__title mdl-color--indigo-700">
+                        <h2 class="mdl-card__title-text" style="color: #fff">Join channel</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <form action="" id="join-channel">
+                            <div class="channelname-field mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" type="text" id="channelNameInput">
+                                <label class="mdl-textfield__label" for="channelNameInput">Channel</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mdl-card__actions">
+                        <button id="joinChannelButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Join</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="channel-error" class="mdl-js-snackbar mdl-snackbar">
+            <div class="mdl-snackbar__text"></div>
+            <button class="mdl-snackbar__action" type="button"></button>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+</body>
+
+</html>
