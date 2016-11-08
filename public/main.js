@@ -147,7 +147,12 @@ $(document).ready(function () {
         var listItem = $('<li class="mdl-list__item mdl-list__item--three-line"></li>');
         var mainSpan = $('<span class="mdl-list__item-primary-content"></span>');
         var icon = $('<i class="material-icons mdl-list__item-avatar">person</i>');
-        var user = $('<span></span>').text(msg.user);
+        var d = new Date();
+        var s = d.getSeconds();
+        if(s<10) {
+            s = '0'+s;
+        }
+        var user = $('<span></span>').text(msg.user + ' - ' + d.getHours() + ':' + d.getMinutes() + ':'+s);
         var message = $('<span class="mdl-list__item-text-body"></span>').text(msg.msg);
 
         mainSpan.append(icon);
