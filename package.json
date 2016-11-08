@@ -1,9 +1,23 @@
 {
-  "name": "socket-chat",
-  "version": "0.0.1",
-  "description": "socket.io sample chat",
+  "name": "mdl-socket-chat",
+  "version": "1.0.0",
+  "description": "Chat application with multiple rooms and custom usernames, made with Socket.io and Material Design Lite",
   "dependencies": {
     "express": "^4.10.2",
     "socket.io": "^1.5.1"
-  }
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leevilehtonen/mdl-socket-chat.git"
+  },
+  "author": {
+    "name":"Leevi Lehtonen",
+    "email": "leevi.k.lehtonen@helsinki.fi"
+  },
+  "license": "MIT"
 }
+
