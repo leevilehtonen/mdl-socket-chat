@@ -23,15 +23,16 @@ io.on('connection', function (socket) {
             callback(true);
             socket.nickname = data;
             users[socket.nickname] = socket;
-            io.emit('users', Object.keys(users));
             socket.join('all');
             if (rooms['all'] == undefined) rooms['all'] = [];
             rooms['all'].push(socket.nickname);
+            io.emit('user');
         }
     });
 
     socket.on('join', function (room) {
         socket.join(room);
+        io.emit('user');
         if (rooms[room] == undefined) rooms[room] = [];
         rooms[room].push(socket.nickname);
     });
@@ -53,11 +54,10 @@ io.on('connection', function (socket) {
                 var index = element.indexOf(socket.nickname);
                 if (index > -1) {
                     element.splice(index, 1);
+                    io.to(room).emit('user');
                 }
             }
-        }
-
-        io.emit('userleft');
+        }  
     });
 });
 
