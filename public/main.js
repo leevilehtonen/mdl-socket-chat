@@ -79,7 +79,6 @@ $(document).ready(function () {
             var mainSpan = $('<span class="mdl-list__item-primary-content"></span>');
             mainSpan.append('<i class="material-icons mdl-list__item-icon">person</i>' + data[i]);
             listItem.append(mainSpan);
-            console.log(data[i]);
             $('#users').append(listItem);
         }
     });
