@@ -88,8 +88,16 @@ $(document).ready(function () {
         //Calculate time
         var d = new Date();
         var s = d.getSeconds();
+        var m = d.getMinutes();
+        var h = d.getHours();
         if (s < 10) {
             s = '0' + s;
+        }
+        if (m < 10) {
+            m = '0' + m;
+        }
+        if (h < 10) {
+            h = '0' + h;
         }
 
         //Create new message
@@ -97,7 +105,7 @@ $(document).ready(function () {
         var mainSpan = $('<span class="mdl-list__item-primary-content"></span>');
         var icon = $('<i class="material-icons mdl-list__item-avatar">person</i>');
         var user = $('<span></span>').text(msg.user);
-        var message = $('<span class="mdl-list__item-text-body"></span>').text(msg.msg + ' - ' + d.getHours() + ':' + d.getMinutes() + ':' + s);
+        var message = $('<span class="mdl-list__item-text-body"></span>').text(msg.msg + ' - ' + h + ':' + m + ':' + s);
 
         //Build the message html and append it to the correct room div
         mainSpan.append(icon);
