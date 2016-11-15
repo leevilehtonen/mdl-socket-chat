@@ -18,6 +18,12 @@
     "name":"Leevi Lehtonen",
     "email": "leevi.k.lehtonen@helsinki.fi"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "chat","heroku","socket.io","node"
+  ],
+  "engines": {
+    "node": "4.6.0"
+  }
 }
 
