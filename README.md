@@ -7,7 +7,7 @@ Make sure you have [Node.js](http://nodejs.org/) installed.
 ```sh
 
 git clone https://github.com/leevilehtonen/mdl-socket-chat.git # or clone your own fork
-cd node-js-sample
+cd mdl-socket-chat
 npm install
 npm start # or node index.js
 ```
