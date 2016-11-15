@@ -121,7 +121,8 @@ $(document).ready(function () {
         });
     });
 
-
+    //LOCALFUNCTIONS
+    //Load channel which is already joined
     function loadChannel(name) {
         $('#chat-cell').children('div').each(function () {
             if ($(this).prop('id').substring(10) == name) {
@@ -135,6 +136,7 @@ $(document).ready(function () {
         $('#header-title').text(name);
     }
 
+    //Create/Join new channel
     function addNewChannel() {
         var newChannelName = $addChannelFormInput.val().trim().toLowerCase();
         var alreadyJoined = false;
@@ -162,6 +164,7 @@ $(document).ready(function () {
             loadChannel(newChannelName);
         }
     }
+    //Create "window" for new channel
     function createChannelDiv(name) {
         var newChannelDiv = $('<div class="chat-list-div" id="chat-list-' + name + '"></div>');
         var messagesList = $('<ul class="listborder mdl-list" id="messages-' + name + '"></ul>');
@@ -170,8 +173,9 @@ $(document).ready(function () {
 
     }
 
+    //Login 
     function login() {
-        $('#drawer-title').text('Chat (' + $loginChatFormInput.val() + ')'); 
+        $('#drawer-title').text('Chat (' + $loginChatFormInput.val() + ')');
         createChannelDiv('all');
         $('#chat-list-all').show();
         socket.emit('login', $loginChatFormInput.val(), function (data) {
@@ -180,10 +184,9 @@ $(document).ready(function () {
                 $loginWindow.hide();
                 $chatWindow.show();
             } else {
-                var snackbarContainer = $('#username-error');
-                console.log(snackbarContainer);
-                var data = { message: 'Username already taken' };
-                $('#username-error').MaterialSnackbar.showSnackbar('Helo');
+                var $errorText = $('#username-field-title');
+                $errorText.css("color", "red");
+                $errorText.html('Username already taken');
             }
 
         });
@@ -191,6 +194,9 @@ $(document).ready(function () {
 
     }
 
+
+
+    //Send message
     function sendMessage() {
 
         var $currentroom = "";
@@ -205,3 +211,4 @@ $(document).ready(function () {
     }
 
 });
+
